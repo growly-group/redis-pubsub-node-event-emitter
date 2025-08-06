@@ -2,7 +2,7 @@ import { RedisClient } from "bun";
 import { RedisClientType } from "redis";
 import { EventEmitter } from "events";
 
-const notConnectedError = new Error("Redis client is not connected. Please ensure the client is connected before creating a stream.");
+const notConnectedError = new Error("Redis client is not connected. Please ensure the client is connected before creating EventEmitter.");
 const emptyChannelsError = new Error("Channels must be a non-empty array.");
 
 async function createRedisPubSubEmitter(
@@ -21,7 +21,7 @@ async function createRedisPubSubEmitter(
     }
 
     if (publisher instanceof RedisClient || !publisher.isOpen || !publisher.isReady) {
-        throw new Error("Publisher Redis client is not a valid or connected node-redis client.");
+       notConnectedError;
     }
 
     try {
