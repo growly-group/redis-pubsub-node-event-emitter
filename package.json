@@ -1,0 +1,12 @@
+{
+    "name": "redis-pubsub-node-stream",
+    "scripts": {
+        "test": "docker compose up -d && bun test"
+    },  
+    "dependencies": {
+        "redis": "^5.8.0"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.2.19"
+    }
+}
