@@ -29,7 +29,6 @@ async function createRedisPubSubEmitter(
             eventEmitter.emit(channel, message);
         });
     } catch (error) {
-        eventEmitter.emit('error', error);
         throw error;
     }
 
@@ -48,7 +47,8 @@ async function createRedisPubSubEmitter(
     return {
         events: eventEmitter,
         publish,
-        close
+        close,
+
     };
 }
 
